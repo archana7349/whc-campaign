@@ -1,0 +1,24 @@
+
+
+<mat-drawer-container class="example-container" [hasBackdrop]="true" >
+    <mat-drawer #drawer mode="over" position="end"  disableClose="true">
+    <!-- <button mat-icon-button (click)="drawer.close()"><mat-icon>close</mat-icon></button> -->
+    <div id="sidebar-page">
+      <div class="sidebar-header">
+        <button mat-icon-button (click)="drawer.close()"><mat-icon>close</mat-icon></button>
+      </div>
+      <div class="sidebar-content">
+        <a (click)="openHome()">HOME</a>
+        <a (click)="openRedeemption()">REDEEMPTION</a>
+         <a (click)="logout()">LOGOUT</a>
+      </div>
+    </div>
+    </mat-drawer>
+    <mat-drawer-content >
+      <app-header (toggleDrawerEvent)="drawer.open()"></app-header>
+      <div class="ng-content-wrapper" [ngStyle]="{'margin-bottom':!showFooter && '0px'}">
+        <ng-content></ng-content>
+      </div>
+      <app-footer *ngIf="showFooter"></app-footer>
+    </mat-drawer-content>
+  </mat-drawer-container>

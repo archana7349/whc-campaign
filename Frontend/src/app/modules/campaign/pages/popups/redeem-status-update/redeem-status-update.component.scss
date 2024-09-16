@@ -1,0 +1,184 @@
+#redeem-status{
+    .header{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding:10px 20px;
+        box-shadow: 0px 0px 10px 0px ;
+    }
+    .header h2{
+        margin: 0px;
+        padding:0px;
+    }
+
+    .header mat-icon{
+      cursor: pointer;
+    }
+
+    .table-content{
+        margin:20px 20px;
+        min-height:200px;
+        max-height:400px;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+
+    td,th{
+        text-align: center;
+    }
+
+    .btn-confirm{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 20px;
+        column-gap: 20px;
+    }
+    
+    .btn-confirm button{
+        background-color: #3d3de2;
+        color:white
+    }
+
+    .status-success{
+      color:#008000f0 ;
+    }
+
+    .status-failure{
+      color: #ff0000f0;
+    }
+    .status-unknown{
+      color: rgba(255, 251, 0, 0.941);
+    }
+}
+
+
+
+::ng-deep #redeem-status {  
+    .mdc-text-field--focused:not(.mdc-text-field-disabled) .mdc-floating-label {
+      color: #f3950b !important;
+      font-size: 14px;
+      border-radius: 5px;
+      top: 25px !important;
+      transition: 0.3s;
+    }
+  
+    .mat-mdc-option.mdc-list-item--selected:not(.mdc-list-item--disabled) .mdc-list-item__primary-text {
+      // color:#f3950b !important;
+      --mat-option-selected-state-label-text-color: #f3950b !important;
+    }
+  
+    .mdc-text-field:not(.mdc-text-field-disabled) .mdc-floating-label {
+      top: 18px;
+      font-size: 14px;
+    }
+  
+    .mat-mdc-text-field-wrapper .mat-form-field-flex .mat-mdc-floating-label {
+      font-size: 12px;
+    }
+  
+    .mat-mdc-form-field .mdc-text-field--outlined .mdc-notched-outline--upgraded .mdc-floating-label--float-above {
+      color: #f3950b !important;
+      font-size: 14px;
+      padding: 2px 10px;
+      border-radius: 5px;
+      top: 30px !important;
+    }
+  
+    .mdc-text-field:not(.mdc-text-field--disabled).mdc-text-field__input {
+      color: magenta !important;
+    }
+  
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  
+  
+    .mdc-text-field .mdc-text-field__input {
+      caret-color: #f3950b;
+      color: rgba(0, 0, 0);
+      font-size: 14px;
+      --mdc-outlined-text-field-input-text-placeholder-color: rgba(96, 96, 96, 0.87);
+    }
+  
+    .mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__leading,
+    .mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__notch,
+    .mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__trailing {
+      border-color: rgb(196, 196, 196);
+      --mdc-outlined-text-field-outline-width: 3px;
+      transition: .1s
+    }
+  
+    .mdc-text-field--outlined:not(.mdc-text-field--disabled):not(.mdc-text-field--focused):hover .mdc-notched-outline .mdc-notched-outline__leading,
+    .mdc-text-field--outlined:not(.mdc-text-field--disabled):not(.mdc-text-field--focused):hover .mdc-notched-outline .mdc-notched-outline__notch,
+    .mdc-text-field--outlined:not(.mdc-text-field--disabled):not(.mdc-text-field--focused):hover .mdc-notched-outline .mdc-notched-outline__trailing {
+      border-color: rgb(0, 0, 0);
+      --mdc-outlined-text-field-outline-width: 3px;
+      transition: .6s
+    }
+  
+    .mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-notched-outline__leading,
+    .mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-notched-outline__notch,
+    .mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-notched-outline__trailing {
+      border-color: rgb(248, 190, 0);
+      --mdc-outlined-text-field-focus-outline-width: 3px;
+    }
+  
+    .mat-mdc-text-field-wrapper {
+      height: 45px !important;
+      background-color: white;
+      box-shadow: 6px 6px 2px 1px rgba(193, 187, 187, 0.2);
+    }
+  
+    .mat-mdc-input-element {
+      position: relative;
+      top: -5px !important;
+    }
+  
+    .mat-mdc-select-arrow svg {
+      top: 0px;
+      color: #b3b3b3;
+    }
+  
+    .select-input {
+      // height: 40px !important;
+      .mat-mdc-form-field-infix {
+        margin-top: -4px !important;
+      }
+    }
+  
+  
+    .mat-select-content {
+      // width:2000px;
+      background-color: red;
+      // font-size: 10px;   
+    }
+  
+    .mat-mdc-icon-button {
+      margin-top: -10px;
+      transform: scale(0.9);
+    }
+    
+    .mat-mdc-form-field-subscript-wrapper{
+        display: none;
+    }
+    .mat-mdc-header-cell {
+      font-family: 'Soleto' !important;
+      // font-weight: normal !important;
+      font-weight: 600;
+      // font-style: bold!important;
+      background: #dedede!important;
+      color: #292a3f;
+      text-align: center;
+    }
+
+}
+::ng-deep.mat-mdc-dialog-container .mdc-dialog__surface{
+  height:fit-content;
+  width:auto;
+  background-color: white;
+  position: relative;
+} 

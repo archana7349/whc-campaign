@@ -1,0 +1,20 @@
+<div id="header">
+    <div class="page-header">
+        <div class="header-wrapper">
+            <div class="header-logo">
+                <img src="assets/images/logo/logo2.png"/>
+            </div>
+            <div class="header-link">
+                <a (click)="openHome()" *ngIf="loggedIn?.user_role != Admin"><mat-icon>house</mat-icon> HOME</a>
+                <a  (click)="openRedeemption()" *ngIf="loggedIn?.user_role != Admin">REDEMPTION</a>
+                <a  (click)="openBranch()" *ngIf="loggedIn?.user_role === Admin">UPDATE </a>
+                <a (click)="logout()">LOGOUT</a>
+            </div>
+            <div class="header-menu">
+                <button mat-icon-button (click)="toggleDrawer($event)" ><mat-icon>menu</mat-icon></button>
+            </div>
+        </div>
+        
+     
+    </div>
+</div>

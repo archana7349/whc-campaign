@@ -1,0 +1,302 @@
+::ng-deep #verify-upi {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    //background-color: #fafafa;
+    height: 68vh;
+    overflow: hidden;
+
+    button {
+        font-family: 'Soleto' !important;
+        font-weight: normal !important;
+        font-style: normal;
+        font-size: 15px !important;
+    }
+
+    .card-wrapper {
+        width: 40%;
+
+        .earned-cashback-wrapper {
+            display: flex;
+            justify-content: end;
+            margin-bottom: 20px;
+
+            .earned-cashback {
+                background-image: linear-gradient(to right, #f3950b, #f9bb15, #f3970c);
+                border-radius: 5px;
+                padding: 5px 20px;
+
+                p {
+                    margin: 0px;
+                    padding: 0px;
+                    font-family: 'Soleto' !important;
+                    font-weight: normal !important;
+                    font-style: normal;
+                    font-size: 18px !important;
+                }
+            }
+        }
+
+        .card {
+            width: 100%;
+            border-radius: 30px;
+            background: #FFF;
+            border: 1px solid #ccc;
+            box-shadow: inset 0 -3em 3em rgb(132 132 132 / 30%), 0 0 0 2px white, 0.3em 0.3em 1em rgb(255 255 255);
+            border-radius: 30px;
+            padding: 25px 10px;
+
+            .cardContainer {
+                display: flex;
+                justify-content: center;
+
+                .cardInnerWrapper {
+                    width: 80%;
+                    margin-top: 10px
+                }
+            }
+
+            .otp{
+                font-size: 14px !important;
+                height:30px;
+                padding: 0px;
+            }
+
+            .pointsInput {
+                display: grid;
+                grid-template-columns: 100%;
+
+                // input {
+                //     width: 100%;
+                // }
+            }
+
+            mat-form-field {
+                width: 100%;
+
+                button {
+                    background-image: linear-gradient(to right, #f3950b, #f9bb15, #f3970c);
+                }
+            }
+
+
+
+            .submit-btn {
+                margin-top: 10px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                button {
+                    background-color: #f5a20e;
+                    border-color: #f5a20e;
+                    color: #000000;
+                    font-weight: 500;
+                    font-size: 17px;
+
+                }
+
+
+                .otp-mobile {
+                    display: none;
+                }
+
+            }
+
+            h2 {
+                text-align: center;
+                margin: 0px auto;
+            }
+
+            p {
+                font-size: 19px;
+                font-weight: 500;
+            }
+
+            .buttons {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+            }
+
+
+
+            .mat-mdc-text-field-wrapper {
+                height: 45px !important;
+                background-color: white;
+                box-shadow: 6px 6px 2px 1px rgba(193, 187, 187, 0.2);
+            }
+
+            .mat-mdc-form-field-flex {
+                margin-top: -6px;
+                margin-right: 10px;
+            }
+
+            .mat-mdc-input-element {
+                position: relative;
+                top: 2px !important;
+            }
+
+            .mdc-text-field--focused:not(.mdc-text-field-disabled) .mdc-floating-label {
+                color: #f3950b !important;
+                font-size: 14px;
+                border-radius: 5px;
+                top: 25px !important;
+                transition: 0.3s;
+            }
+
+            .mdc-text-field:not(.mdc-text-field-disabled) .mdc-floating-label {
+                top: 20px;
+
+            }
+
+            .mat-mdc-text-field-wrapper .mat-form-field-flex .mat-mdc-floating-label {
+                font-size: 12px;
+            }
+
+            .mat-mdc-form-field .mdc-text-field--outlined .mdc-notched-outline--upgraded .mdc-floating-label--float-above {
+                color: #f3950b !important;
+                font-size: 14px;
+                padding: 2px 10px;
+                border-radius: 5px;
+                top: 30px !important;
+            }
+
+            .mdc-text-field:not(.mdc-text-field--disabled).mdc-text-field__input {
+                color: magenta !important;
+            }
+
+
+            .mdc-text-field .mdc-text-field__input {
+                caret-color: #f3950b;
+                color: rgba(0, 0, 0);
+                --mdc-outlined-text-field-input-text-placeholder-color: rgba(96, 96, 96, 0.87);
+            }
+
+            .mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__leading,
+            .mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__notch,
+            .mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__trailing {
+                border-color: rgb(196, 196, 196);
+                --mdc-outlined-text-field-outline-width: 3px;
+                transition: .1s
+            }
+
+            .mdc-text-field--outlined:not(.mdc-text-field--disabled):not(.mdc-text-field--focused):hover .mdc-notched-outline .mdc-notched-outline__leading,
+            .mdc-text-field--outlined:not(.mdc-text-field--disabled):not(.mdc-text-field--focused):hover .mdc-notched-outline .mdc-notched-outline__notch,
+            .mdc-text-field--outlined:not(.mdc-text-field--disabled):not(.mdc-text-field--focused):hover .mdc-notched-outline .mdc-notched-outline__trailing {
+                border-color: rgb(0, 0, 0);
+                --mdc-outlined-text-field-outline-width: 3px;
+                transition: .6s
+            }
+
+            .mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-notched-outline__leading,
+            .mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-notched-outline__notch,
+            .mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-notched-outline__trailing {
+                border-color: rgb(248, 190, 0);
+                --mdc-outlined-text-field-focus-outline-width: 3px;
+            }
+
+            .verified {
+
+                .mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__leading,
+                .mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__notch,
+                .mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__trailing {
+                    border-color: rgb(66, 176, 23);
+                    --mdc-outlined-text-field-outline-width: 3px;
+                    transition: .1s
+                }
+
+                .mdc-text-field--outlined:not(.mdc-text-field--disabled):not(.mdc-text-field--focused):hover .mdc-notched-outline .mdc-notched-outline__leading,
+                .mdc-text-field--outlined:not(.mdc-text-field--disabled):not(.mdc-text-field--focused):hover .mdc-notched-outline .mdc-notched-outline__notch,
+                .mdc-text-field--outlined:not(.mdc-text-field--disabled):not(.mdc-text-field--focused):hover .mdc-notched-outline .mdc-notched-outline__trailing {
+                    border-color: rgb(66, 176, 23);
+                    --mdc-outlined-text-field-outline-width: 3px;
+                    transition: .6s
+                }
+
+                .mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-notched-outline__leading,
+                .mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-notched-outline__notch,
+                .mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-notched-outline__trailing {
+                    border-color: rgb(66, 176, 23);
+                    --mdc-outlined-text-field-focus-outline-width: 3px;
+                }
+
+                button {
+                    background: rgb(66, 176, 23);
+                    border-color: rgb(66, 176, 23);
+                    color: rgb(230, 230, 230);
+                    padding:0px 20px
+                }
+            }
+        }
+    }
+
+
+}
+
+
+@media only screen and (max-width:1030px) {
+    #verify-upi {
+        .card-wrapper {
+            width: 60%;
+        }
+    }
+}
+
+
+@media only screen and (max-width:800px) {
+    #verify-upi {
+        .card-wrapper {
+            width: 80%;
+        }
+    }
+}
+
+
+@media only screen and (max-width:500px) {
+    #verify-upi {
+        .card-wrapper {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            width: 90%;
+        }
+
+        .otp {
+            display: none;
+        }
+
+        .otp-mobile {
+            display: block !important;
+        }
+
+        .submit-btn {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            row-gap: 10px;
+
+            button {
+                width: 100%;
+            }
+
+            .verified {
+                background: rgb(66, 176, 23);
+                border-color: rgb(66, 176, 23);
+                color: rgb(230, 230, 230)
+            }
+        }
+
+        .card {
+            width: 90%
+        }
+
+        .earned-cashback-wrapper {
+            justify-content: center;
+            width: 97%;
+        }
+    }
+}

@@ -1,0 +1,50 @@
+.mat-drawer {
+    width:80%;
+    background-color: black;
+    overflow: hidden !important;
+}
+
+#sidebar-page{
+    height: max-content;
+    width:100%;
+    overflow: hidden !important;
+    .sidebar-header{
+        margin: 20px;
+        
+        button{
+            background-color: #000000;
+            color: white;
+        }
+    }
+    .sidebar-content{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 100px;
+        row-gap: 20px;
+        a{
+            color: rgb(226, 226, 226);
+            width:100%;
+            padding:10px 0px;
+            border:1px solid #f39200;;
+            text-align: center;
+            font-size: 18px;
+            cursor: pointer;
+        }
+    }
+}
+.ng-content-wrapper{
+    margin-top:90px;
+    margin-bottom: 90px;
+    background-color: #ffffff;
+    min-height: 531px;
+}
+
+.mat-drawer-content{
+    background-color: #ffffff;
+}
+
+mat-drawer-container{
+    height:100% !important;
+}

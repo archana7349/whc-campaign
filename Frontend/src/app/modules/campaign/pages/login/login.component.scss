@@ -1,0 +1,134 @@
+
+
+::ng-deep #login-page{
+    overflow: hidden;
+    .login-page-wrapper{
+      button{
+        font-family: 'Soleto'!important;
+    font-weight: normal !important;
+    font-style: normal;
+    font-size: 15px !important;
+      }
+      .wrapper{
+        
+        display: flex;
+        flex-direction: column;
+        row-gap: 10px;
+      }
+      .otp-mobile{
+        display:none
+      }
+        h2{
+            padding:10px 20px;
+            color: #f3950b;
+        }
+        mat-form-field{
+            width:100%;
+        }
+        .mdc-text-field:not(.mdc-text-field-disabled) .mdc-floating-label{
+            // color:#000000;
+            top:25px;
+            // left:0px;
+        
+          }
+
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+          -webkit-appearance: none;
+          margin: 0;
+        }
+        
+        .mdc-text-field--focused:not(.mdc-text-field-disabled) .mdc-floating-label{
+          background-color: #000000;
+          color:#ffffff !important;
+          font-size: 16px;
+          padding:2px 10px;
+          border-radius: 5px;
+        //   top: 25px !important;
+          transition: 0.3s;
+        }
+        .mat-mdc-form-field .mdc-text-field--outlined .mdc-notched-outline--upgraded .mdc-floating-label--float-above{
+            background-color: #000000;
+            color:#ffffff !important;
+            font-size: 14px;
+            padding:2px 10px;
+            border-radius: 5px;
+            // top: 30px !important;
+          }
+        .mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__leading,
+              .mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__notch,
+              .mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__trailing{
+               border-color: rgb(196, 196, 196);
+               --mdc-outlined-text-field-outline-width: 3px;
+               transition:.1s
+              //  border-left: none;
+                // border-width: 2px;
+                
+              }
+            
+              .mdc-text-field--outlined:not(.mdc-text-field--disabled):not(.mdc-text-field--focused):hover .mdc-notched-outline .mdc-notched-outline__leading,
+              .mdc-text-field--outlined:not(.mdc-text-field--disabled):not(.mdc-text-field--focused):hover .mdc-notched-outline .mdc-notched-outline__notch,
+              .mdc-text-field--outlined:not(.mdc-text-field--disabled):not(.mdc-text-field--focused):hover .mdc-notched-outline .mdc-notched-outline__trailing{
+                border-color: rgb(248, 190, 0);
+                --mdc-outlined-text-field-outline-width: 3px;
+                // border-left: none;
+                // border-width: 2px;
+                transition:.6s
+              }
+            
+              .mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-notched-outline__leading,
+              .mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-notched-outline__notch,
+              .mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-notched-outline__trailing{
+                border-color: rgb(248, 190, 0);
+                --mdc-outlined-text-field-focus-outline-width:3px;
+                 // border-left: none;
+                // border-width: 2px;
+              }
+    }
+    .wrapper{
+        padding:10px 20px;
+        button{
+            margin-right: 10px;
+            word-break: break-all;
+            background-image: linear-gradient(to right, #f3950b, #f9bb15, #f3970c);
+            color:black;
+            width: fit-content;
+        }
+    }
+    .mat-accent{
+        background-image: linear-gradient(to right, #f3950b, #f9bb15, #f3970c);
+    }
+
+    ::ng-deep .mat-mdc-text-field-wrapper{
+        background-color: white;
+        border-radius: 5px;
+    }
+}
+
+
+@media only screen and (max-width: 600px) {
+#login-page{
+  .login-page-wrapper{
+    .container{
+      .wrapper{
+        .otp{
+          display:none;
+        }
+        // padding:10px 5px;
+        .buttons{
+          display: flex;
+          row-gap: 10px;
+          flex-direction: column;
+          .otp-mobile{
+            display: block;
+          }
+          button{
+
+            width:100%;
+          }
+        }
+      }
+    }
+  }
+}
+}

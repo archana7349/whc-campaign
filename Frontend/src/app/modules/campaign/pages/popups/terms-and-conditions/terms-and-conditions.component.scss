@@ -1,0 +1,174 @@
+#tncmodal{
+    font-family: 'Soleto'!important;
+    font-weight: normal !important;
+    font-style: normal;
+
+    .address-contact{
+        display:flex;
+        justify-content: flex-start;
+        column-gap: 20%;
+        align-items: flex-end;
+    }
+
+    .contact p{
+        width: fit-content;
+        min-width: 120px;
+    }
+
+    .modal-header {
+        display:flex;
+        justify-content: space-between;
+        padding: 10px 10px;
+        border-bottom: 1px solid #e5e5e5;
+    }
+    .mypop-content .modal-header h2 {
+        font-size: 22px;
+        font-weight: 600;
+        color: #000;
+        letter-spacing: 1px;
+        margin-bottom: 0;
+        font-family: 'Soleto'!important;
+    }
+    .close{
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        opacity: 1;
+        width: 30px!important;
+        height: 30px;
+        border: 1px solid #000000;
+        border-radius: 5px;
+        font-size: 16px;
+        line-height: 25px;
+        -webkit-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+        z-index: 99;
+        color: #000000;
+       
+        background-color: transparent;
+        span{
+            font-weight: 600;
+            font-size: 12px;
+        }
+    }
+
+    .modal-body{
+        padding:20px;
+    }
+    .table-responsive{
+        overflow-x: auto;
+        padding-bottom:20px;
+    }
+    .headinggtnc{
+        font-family: 'Soleto'!important;
+        color: #363f4d;
+
+        font-size: 20px;
+        font-weight: bold;
+        border-bottom: 2px solid #000;
+        padding: 5px 10px;
+        background: #dedede;
+        border: 1px solid #ddd;
+        margin-bottom: 20px;
+    }
+
+    .tnclistq{
+        font-size: 16px;
+        margin:0px;
+        padding:20px;
+    }
+
+        table {
+            // margin:0px 20px;
+            // text-align: center;
+            // border: 1px solid rgb(190, 190, 190);
+            width:100%;
+            border-collapse: collapse;
+        }
+        th{
+            background-color: #f5f5f5;
+            text-align: center;
+            border: 1px solid rgb(190, 190, 190);
+            border-collapse: collapse;
+            padding:10px;
+            width:fit-content;
+        }
+        td{
+            width:fit-content;
+            text-align: center;
+            border: 1px solid rgb(190, 190, 190);
+            border-collapse: collapse;
+            padding:10px;
+            text-wrap: nowrap;
+    }
+
+    li{
+        margin-bottom:20px;
+    }
+    .badge{
+        margin:0px 10px 0px 0px;
+        border-radius:20px;
+        background-color: #7c7c7c;
+        color:white;
+        font-size:12px;
+        font-weight: 600;
+        padding:1px 3px 1px 6px;
+
+    }
+
+    .stepli{
+        margin:0px;
+        padding-left:20px;
+        li{
+            list-style-type: none;
+        }
+    }
+
+    // .table-responsive{
+    //     width:100%;
+    // }
+    .minheadtnc{
+        // margin:20px;
+        font-family: 'Soleto'!important;
+        color: #363f4d;
+
+        font-size: 18px;
+        font-weight: bold;
+        border-bottom: 2px solid #000;
+        padding: 5px 10px;
+        background: #dedede;
+        border: 1px solid #ddd;
+        margin-bottom: 20px;
+    }
+
+    
+
+}
+
+@media only screen and (max-width:500px){
+
+    #tncmodal{
+        .mypop-content .modal-header h2{
+            font-size: 15px;
+        }
+
+        .headinggtnc{
+            font-size: 12px;
+            line-height:15px;
+        }
+        .tnclistq{
+            font-size: 11px;
+        }
+
+        .minheadtnc{
+            font-size: 12px;
+            line-height:15px;
+        }
+        th{
+            font-size: 11px;
+        }
+        td{
+            font-size: 11px;
+        }
+    }
+}

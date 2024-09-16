@@ -1,0 +1,99 @@
+<app-layout [showFooter]="false">
+  <div id="register-page">
+    <div class="register-page-wrapper">
+      <img src="assets/images/scanANDwin.jpeg" />
+      <div class="register-fields">
+        <h2>Onam 2024 Scratch N Win</h2>
+        <div class="buttons" *ngIf="!qrFlag">
+          <span class="balance-points">Cashback Earned : &#x20B9;{{remainingPoints}} </span>
+          <button class="btn-redeem" (click)="gotoRedeem()" [disabled]="!registerationEnable">Redeem</button>
+        </div>
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+          <div class="qr-section" *ngIf="!qrFlag">
+            <div class="inputField">
+              <mat-form-field appearance="outline">
+                <mat-label>QR code*</mat-label>
+                <input type="text" pattern="\d*" onKeyPress="if(this.value.length==16) return false;" matInput placeholder="Enter product QR code" [readonly]="!registerationEnable"
+                  formControlName="qrCode" (input)="fieldValidators('qrCode')">
+                <mat-error *ngIf="registerForm.get('qrCode')?.hasError('required')">Please enter the coupon code</mat-error>
+                <mat-error *ngIf="registerForm.get('qrCode')?.hasError('pattern')">Please enter the 16 digit valid code</mat-error>
+              </mat-form-field>
+            </div>
+
+            <div class="qr-section-btn">
+              <button class="btn-qr-scan" type="button" (click)="openDialog()">Scan QR</button>
+              <button class="btn-qr-submit" type="button" (click)="validateQr()">Submit</button>
+            </div>
+          </div>
+
+          <div class="inputDetails" *ngIf="qrFlag">
+
+            <div class="inputField">
+
+              <mat-form-field appearance="outline">
+                <mat-label>Customer Name*</mat-label>
+                <input matInput placeholder="Customer Name" [readonly]="!registerationEnable"
+                  formControlName="customer_name">
+                <mat-error>Please enter customer name</mat-error>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline" class="readonly-input">
+                <mat-label>Mobile Number*</mat-label>
+                <input matInput placeholder="Mobile Number" type="number" formControlName="customer_mobile"
+                  readonly="true">
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Email ID*</mat-label>
+                <input matInput placeholder="Customer Email ID" [readonly]="!registerationEnable" type="email"
+                  formControlName="customer_email">
+                <mat-error *ngIf="registerForm.get('customer_email')?.hasError('required')">Please enter the customer email</mat-error>
+                <mat-error *ngIf="registerForm.get('customer_email')?.hasError('pattern')">Please enter the valid email</mat-error>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Pincode*</mat-label>
+                <input matInput placeholder="Enter Pincode" [readonly]="!registerationEnable"
+                  formControlName="pincode" (input)="getCities($event)" maxlength="6">
+                <mat-error *ngIf="registerForm.get('pincode')?.hasError('required')">Enter the pincode</mat-error>
+                <mat-error *ngIf="registerForm.get('pincode')?.hasError('pattern')">Enter 6-digit valid code</mat-error>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline" class="select-input">
+                <mat-label>City*</mat-label>
+                <mat-select formControlName="city" placeholder="Select the city">
+                  <mat-option *ngFor="let city of cities" [value]="city"  [disabled]="!registerationEnable">
+                    {{city}}
+                  </mat-option>
+                </mat-select>
+                <mat-error>Please select the city</mat-error>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Scratch Card Code*</mat-label>
+                <input matInput placeholder="Scratch Card Code" [readonly]="!registerationEnable"
+                  formControlName="scratch_code" (input)="capitalize($event.target)" maxlength="6">
+                <mat-error *ngIf="registerForm.get('scratch_code')?.hasError('required')">Enter scratch card
+                  code</mat-error>
+                <mat-error *ngIf="registerForm.get('scratch_code')?.hasError('pattern')">Enter 6-digit valid code</mat-error>
+              </mat-form-field>
+
+
+            </div>
+
+            <div class="register-btn">
+
+              <button type="submit" label="">Submit</button>
+
+            </div>
+
+          </div>
+        </form>
+        <div class="tac">
+          <a (click)="termsAndCondition()">* Terms & Conditions Apply</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</app-layout>

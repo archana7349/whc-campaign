@@ -1,0 +1,52 @@
+<div id="redeem-status">
+    <div class="header">
+        <h2>{{activeTable.processTable ? 'Processed' : 'Confirm'}} Redemption Request</h2>
+        <mat-icon (click)="closeDialog()">close</mat-icon>
+    </div>
+    <div class="table-content">
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z1">
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef> Name </th>
+                <td mat-cell *matCellDef="let element"> {{element?.name || "-" }} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="amount">
+                <th mat-header-cell *matHeaderCellDef> Amount </th>
+                <td mat-cell *matCellDef="let element"> {{element?.amount || "-" }} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="upi">
+                <th mat-header-cell *matHeaderCellDef> Recipient UPI </th>
+                <td mat-cell *matCellDef="let element"> {{element?.upiId || "-" }} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="status" *ngIf=" activeTable.processTable">
+                <th mat-header-cell *matHeaderCellDef> Status </th>
+                <td mat-cell *matCellDef="let element" [ngClass]="{
+                        'status-success':element?.status == 'Approved',
+                        'status-failure':element?.status == 'Rejected',
+                        'status-unknown':(element?.status != 'Rejected' && element?.status != 'Approved') }">
+                    {{element?.status || "-" }} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="comment" *ngIf="activeTable.confirmTable">
+                <th mat-header-cell *matHeaderCellDef>Comment{{data?.dialogData?.[0]?.status == 'Approved' ? '' : '*'}}
+                </th>
+                <td mat-cell *matCellDef="let element; let i = index" #datat>
+                    <mat-form-field appearance="outline" class="comment">
+                        <input matInput type="text" (input)="addComment(i,$event)" [value]="element?.comment" />
+                    </mat-form-field>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            <tr class="mat-row" *matNoDataRow>
+                <td class="mat-cell">No data found</td>
+            </tr>
+        </table>
+        <div class="btn-confirm">
+            <button mat-raised-button type="button" (click)="confirmProcess()" *ngIf=" activeTable?.confirmTable">Confirm</button>
+        </div>
+    </div>
+</div>

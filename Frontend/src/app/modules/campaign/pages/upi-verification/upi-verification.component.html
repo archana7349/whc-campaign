@@ -1,0 +1,45 @@
+<app-layout>
+    <div id="verify-upi">
+        <div class="card-wrapper">
+            <div class="earned-cashback-wrapper">
+                <div class="earned-cashback">
+                    <p>Total Cashback Earned : &#x20B9;{{remainingPoints}}</p>
+                </div>
+            </div>
+            <div class="card">
+                <h2>Verify UPI ID</h2>
+                <div class="cardContainer">
+                    <div class="cardInnerWrapper">
+                        <form [formGroup]="redeemForm" (ngSubmit)="onSubmit()">
+                        <mat-form-field appearance="outline" [ngClass]="{'verified':verifiedFlag}">
+                            <mat-label>Enter UPI id</mat-label>
+                            <input matInput type="text" placeholder="Enter UPI id" formControlName="upi_id" required (input)="redeemForm.get('upi_id')?.setErrors({'verify':true});verifiedFlag=false"/>
+                            <button class="otp" mat-raised-button matSuffix mat-stroked-button type="button" [ngClass]="{'verified':verifiedFlag}"
+                                aria-label="search" (click)="verifyUpi()">{{verifiedFlag ? "Verified":"Verify"}} <mat-icon *ngIf="verifiedFlag">check_circle</mat-icon></button>
+                                
+                                <mat-error *ngIf="redeemForm.get('upi_id')?.hasError('required')">Please Enter UPI id</mat-error>
+                                <mat-error *ngIf="redeemForm.get('upi_id')?.hasError('verify')">Please Verify UPI id</mat-error>
+                        </mat-form-field>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Points to be redeemed</mat-label>
+                            <input matInput type="number" placeholder="Points to be redeemed" formControlName="points" (input)="pointsValidation()"/>
+                            <mat-error *ngIf="redeemForm.get('points')?.hasError('required')">Please Enter Points</mat-error>
+                            <mat-error *ngIf="redeemForm.get('points')?.hasError('exceeded')">Insufficient balance</mat-error>
+                        </mat-form-field>
+
+                        <div class="submit-btn"> 
+                            <button class="otp-mobile" mat-raised-button mat-stroked-button aria-label="search" type="button" (click)="verifyUpi()" [ngClass]="{'verified':verifiedFlag}">{{verifiedFlag ? "Verified":"Verify UPI ID"}} <mat-icon *ngIf="verifiedFlag">check_circle</mat-icon></button>
+                            <button mat-raised-button mat-stroked-button aria-label="search" [disabled]="isButtonDisabled" type="submit">Submit</button>
+                        </div>
+                    </form>
+                    </div>
+
+
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</app-layout>

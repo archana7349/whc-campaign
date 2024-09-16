@@ -1,0 +1,7 @@
+<div class="qr-scanner-code">
+    <zxing-scanner previewFitMode="contain" #scanner (scanSuccess)="scanSuccessHandler($event)" >
+    </zxing-scanner>
+    <div class="btn">
+        <button [mat-dialog-close]="" mat-raised-button>close</button>
+    </div>
+</div>

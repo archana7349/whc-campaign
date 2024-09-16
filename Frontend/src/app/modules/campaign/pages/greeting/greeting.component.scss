@@ -1,0 +1,63 @@
+::ng-deep #thank-you-page{
+  .thank-you-page-wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    //background-color: #fafafa;
+    height:68vh;
+    overflow: hidden;
+    .card {
+      width: 60%;
+      background-image: linear-gradient(to right, #f3950b, #f9bb15, #f3970c);
+      border-radius: 30px;
+      padding: 25px 30px;
+    
+      h2 {
+        text-align: center;
+        font-size: 28px;
+        margin:0px auto;
+      }
+    
+      p {
+        font-size: 19px;
+        font-weight: 500;
+      }
+    
+      .buttons {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    
+        button {
+          background-color: #000000;
+          border-color: #000000;
+          font-size: 21px;
+          font-family: 'SoletoMedium', sans-serif;
+          padding: 0px;
+          margin: 0px;
+          font-weight: 400;
+          color:white;
+          padding:20px
+        }
+      }
+    }
+  }
+  .redirecting p{
+    text-align: center;
+  }
+
+  }
+  
+  
+  
+  @media only screen and (max-width:500px){
+    #thank-you-page{
+      button{
+        padding-top:30px;
+        padding-bottom:30px;
+        font-size: 14px!important;
+      }
+    }
+  }

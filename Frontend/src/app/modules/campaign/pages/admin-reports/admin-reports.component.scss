@@ -1,0 +1,273 @@
+::ng-deep #admin-reports {
+  min-height: 68vh;
+  .admin-reports-wrapper {
+    padding: 10px 30px;
+    //background-color: #fafafa;
+
+    .admin-reports-header {
+      h2 {
+        font-family: 'Soleto' !important;
+        font-weight: normal !important;
+        font-style: normal;
+        text-decoration: underline 2px rgb(245, 159, 29);
+        text-underline-offset: 6px;
+        color: #3f3f3f;
+        margin-bottom: 10px;
+      }
+    }
+
+    .status-success{
+      background-color:#0080000c;
+      color:#008000;
+      border-radius:10px;
+      padding:8px 10px;
+    }
+
+    .status-failure{
+      background-color: #ff00000c;
+      color:#ff0000;
+      border-radius:10px;
+      padding:8px 10px;
+    }
+
+    .custom-mat-suffix{
+      transform: scale(.8);
+    margin-top: -10px;
+    }
+
+    .admin-reports-content {
+
+
+
+      .admin-reports-buttons {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+
+        .admin-reports-filters {
+          display: flex;
+          flex-wrap: wrap;
+          max-width: 60%;
+          column-gap: 20px;
+
+          mat-form-field {
+            width: 300px
+          }
+
+
+          .mat-mdc-input-element {
+            position: relative;
+            top: -5px !important;
+          }
+
+          .mat-mdc-select-arrow svg {
+            top: -5px;
+            color: #b3b3b3;
+          }
+
+          .mat-mdc-select-value {
+            position: relative;
+            left: 8px;
+            top: -5px;
+            font-size: 13px;
+          }
+
+
+
+          .mat-mdc-text-field-wrapper {
+            height: 45px !important;
+            background-color: white;
+            box-shadow: 6px 6px 2px 1px rgba(193, 187, 187, 0.2);
+          }
+
+          .mdc-text-field--focused:not(.mdc-text-field-disabled) .mdc-floating-label {
+            color: #f3950b !important;
+            font-size: 14px;
+            border-radius: 5px;
+            top: 25px !important;
+            transition: 0.3s;
+          }
+
+          .mat-mdc-option.mdc-list-item--selected:not(.mdc-list-item--disabled) .mdc-list-item__primary-text {
+            // color:#f3950b !important;
+            --mat-option-selected-state-label-text-color: #f3950b !important;
+          }
+
+          .mdc-text-field:not(.mdc-text-field-disabled) .mdc-floating-label {
+            top: 18px !important;
+            font-size: 14px;
+          }
+
+          .mat-mdc-text-field-wrapper .mat-form-field-flex .mat-mdc-floating-label {
+            font-size: 12px;
+          }
+
+          .mat-mdc-form-field .mdc-text-field--outlined .mdc-notched-outline--upgraded .mdc-floating-label--float-above {
+            color: #f3950b !important;
+            font-size: 14px;
+            padding: 2px 10px;
+            border-radius: 5px;
+            top: 30px !important;
+          }
+
+          .mdc-text-field:not(.mdc-text-field--disabled).mdc-text-field__input {
+            color: magenta !important;
+          }
+
+          input::-webkit-outer-spin-button,
+          input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+          }
+
+
+          .mdc-text-field .mdc-text-field__input {
+            caret-color: #f3950b;
+            color: rgba(0, 0, 0);
+            font-size: 14px;
+            --mdc-outlined-text-field-input-text-placeholder-color: rgba(96, 96, 96, 0.87);
+          }
+
+          .mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__leading,
+          .mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__notch,
+          .mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__trailing {
+            border-color: rgb(196, 196, 196);
+            --mdc-outlined-text-field-outline-width: 3px;
+            transition: .1s
+          }
+
+          .mdc-text-field--outlined:not(.mdc-text-field--disabled):not(.mdc-text-field--focused):hover .mdc-notched-outline .mdc-notched-outline__leading,
+          .mdc-text-field--outlined:not(.mdc-text-field--disabled):not(.mdc-text-field--focused):hover .mdc-notched-outline .mdc-notched-outline__notch,
+          .mdc-text-field--outlined:not(.mdc-text-field--disabled):not(.mdc-text-field--focused):hover .mdc-notched-outline .mdc-notched-outline__trailing {
+            border-color: rgb(0, 0, 0);
+            --mdc-outlined-text-field-outline-width: 3px;
+            transition: .6s
+          }
+
+          .mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-notched-outline__leading,
+          .mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-notched-outline__notch,
+          .mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-notched-outline__trailing {
+            border-color: rgb(248, 190, 0);
+            --mdc-outlined-text-field-focus-outline-width: 3px;
+          }
+        }
+
+
+        mat-paginator {
+          font-family: 'Soleto' !important;
+          //background-color: #fafafa;
+          --mat-paginator-enabled-icon-color: #f79400;
+
+          .mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__leading,
+          .mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__notch,
+          .mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__trailing {
+            border-color: rgb(196, 196, 196);
+            --mdc-outlined-text-field-outline-width: 3px;
+            transition: .1s
+          }
+
+          .mdc-text-field--outlined:not(.mdc-text-field--disabled):not(.mdc-text-field--focused):hover .mdc-notched-outline .mdc-notched-outline__leading,
+          .mdc-text-field--outlined:not(.mdc-text-field--disabled):not(.mdc-text-field--focused):hover .mdc-notched-outline .mdc-notched-outline__notch,
+          .mdc-text-field--outlined:not(.mdc-text-field--disabled):not(.mdc-text-field--focused):hover .mdc-notched-outline .mdc-notched-outline__trailing {
+            border-color: rgb(0, 0, 0);
+            --mdc-outlined-text-field-outline-width: 3px;
+            transition: .6s
+          }
+
+          .mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-notched-outline__leading,
+          .mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-notched-outline__notch,
+          .mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-notched-outline__trailing {
+            border-color: rgb(248, 190, 0);
+            --mdc-outlined-text-field-focus-outline-width: 3px;
+          }
+
+          .mat-mdc-paginator-range-label {
+            font-family: 'Soleto' !important;
+            font-weight: bold !important;
+          }
+
+          .mat-mdc-paginator-page-size-label {
+            font-family: 'Soleto' !important;
+            font-weight: bold !important;
+          }
+
+          .mat-mdc-paginator-container {
+            justify-content: flex-start;
+            align-items: flex-end;
+          }
+        }
+
+        .admin-reports-download {
+          button {
+            background-image: linear-gradient(to right, #f3950b, #f9bb15, #f3970c);
+            color: rgb(63, 63, 63)
+          }
+        }
+
+
+
+
+      }
+
+
+
+      .admin-reports-table-wrapper {
+        .mat-mdc-header-cell {
+          font-family: 'Soleto' !important;
+          // font-weight: normal !important;
+          font-weight: 600;
+          // font-style: bold!important;
+          background: #dedede!important;
+          color: #292a3f;
+          text-align: center;
+        }
+
+        .mat-mdc-header-row {
+          height: 45px !important;
+          border-radius: 20px;
+          overflow: hidden;
+        }
+
+        .mat-mdc-cell {
+          border-bottom-color: rgba(173, 173, 173, 0.097);
+          border-width: 3px;
+          text-align: center;
+        }
+
+
+
+
+      }
+    }
+  }
+
+  .action-btn{
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 20px;
+    margin: 0px auto 20px auto;
+  }
+
+  .approve-btn{
+    background-color: #008000f0;
+    color: rgba(255, 255, 255, 0.911);
+  }
+
+  .reject-btn{
+    background-color: #ff0000f0;
+    color: rgba(255, 255, 255, 0.911);
+  }
+  
+  .mdc-checkbox .mdc-checkbox__native-control:enabled:checked~.mdc-checkbox__background, .mdc-checkbox__native-control:enabled:indeterminate~.mdc-checkbox__background{
+    background-color: #f3950b;
+    border-color: #f3950b;
+    border-radius: 4px;
+  }
+  .mdc-checkbox__ripple{
+    background-color: #f3950b;
+  }
+
+  .mdc-checkbox .mdc-checkbox__native-control:enabled:not(:checked):not(:indeterminate):not([data-indeterminate=true])~.mdc-checkbox__background{
+    border-radius: 4px;
+  }
+}

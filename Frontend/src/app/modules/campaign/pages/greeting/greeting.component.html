@@ -1,0 +1,28 @@
+<app-layout>
+    <div id="thank-you-page">
+        <div class="thank-you-page-wrapper">
+            <div class="card">
+                <h2>Thank You</h2>
+                <p>Dear Customer,<br><br>
+
+                    Thank you for your interest in V-Guard! You have been rewarded a cashback of {{cashback}} rupees. Please
+                    select the redemption option to have your rewards credited to your bank account. Please contact our
+                    helpdesk if you require further assistance.<br><br>
+
+                    Warm regards,<br>
+                    V-Guard Team</p>
+                <div class="buttons">
+                    <button mat-raised-button type="button" (click)="redirect()">
+                        Add More Purchase
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="redirecting">
+            <p>In {{remainingSec}} seconds, redirecting to redemption page. Or <a routerLink="/">click here now</a></p>
+         </div>
+
+
+    </div>
+
+</app-layout>

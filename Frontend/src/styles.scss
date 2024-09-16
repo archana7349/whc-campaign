@@ -1,0 +1,278 @@
+/* You can add global styles to this file, and also import other style files */
+@use '@angular/material' as mat;
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz@6..12&family=Roboto&display=swap');
+
+@font-face {
+  font-family: 'Soleto';
+  src: url('./assets/fonts/Soleto-Regular.eot');
+  src: local('Soleto'), local('Soleto-Regular'),
+      url('./assets/fonts/Soleto-Regular.eot?#iefix') format('embedded-opentype'),
+      url('./assets/fonts/Soleto-Regular.woff2') format('woff2'),
+      url('./assets/fonts/Soleto-Regular.woff') format('woff'),
+      url('./assets/fonts/Soleto-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Soleto';
+  src: url('./assets/fonts/Soleto-Medium.eot');
+  src: local('Soleto Medium'), local('Soleto-Medium'),
+      url('./assets/fonts/Soleto-Medium.eot?#iefix') format('embedded-opentype'),
+      url('./assets/fonts/Soleto-Medium.woff2') format('woff2'),
+      url('./assets/fonts/Soleto-Medium.woff') format('woff'),
+      url('./assets/fonts/Soleto-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Soleto XBold';
+  src: url('./assets/fonts/Soleto-XBold.eot');
+  src: local('Soleto XBold'), local('Soleto-XBold'),
+      url('./assets/fonts/Soleto-XBold.eot?#iefix') format('embedded-opentype'),
+      url('./assets/fonts/Soleto-XBold.woff2') format('woff2'),
+      url('./assets/fonts/Soleto-XBold.woff') format('woff'),
+      url('./assets/fonts/Soleto-XBold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Soleto';
+  src: url('./assets/fonts/Soleto-ThinItalic.eot');
+  src: local('Soleto Thin Italic'), local('Soleto-ThinItalic'),
+      url('./assets/fonts/Soleto-ThinItalic.eot?#iefix') format('embedded-opentype'),
+      url('./assets/fonts/Soleto-ThinItalic.woff2') format('woff2'),
+      url('./assets/fonts/Soleto-ThinItalic.woff') format('woff'),
+      url('./assets/fonts/Soleto-ThinItalic.ttf') format('truetype');
+  font-weight: 100;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Soleto XBold';
+  src: url('./assets/fonts/Soleto-XBoldItalic.eot');
+  src: local('Soleto XBold Italic'), local('Soleto-XBoldItalic'),
+      url('./assets/fonts/Soleto-XBoldItalic.eot?#iefix') format('embedded-opentype'),
+      url('./assets/fonts/Soleto-XBoldItalic.woff2') format('woff2'),
+      url('./assets/fonts/Soleto-XBoldItalic.woff') format('woff'),
+      url('./assets/fonts/Soleto-XBoldItalic.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Soleto';
+  src: url('./assets/fonts/Soleto-Bold.eot');
+  src: local('Soleto Bold'), local('Soleto-Bold'),
+      url('./assets/fonts/Soleto-Bold.eot?#iefix') format('embedded-opentype'),
+      url('./assets/fonts/Soleto-Bold.woff2') format('woff2'),
+      url('./assets/fonts/Soleto-Bold.woff') format('woff'),
+      url('./assets/fonts/Soleto-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Soleto';
+  src: url('./assets/fonts/Soleto-Light.eot');
+  src: local('Soleto Light'), local('Soleto-Light'),
+      url('./assets/fonts/Soleto-Light.eot?#iefix') format('embedded-opentype'),
+      url('./assets/fonts/Soleto-Light.woff2') format('woff2'),
+      url('./assets/fonts/Soleto-Light.woff') format('woff'),
+      url('./assets/fonts/Soleto-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Soleto';
+  src: url('./assets/fonts/Soleto-MediumItalic.eot');
+  src: local('Soleto Medium Italic'), local('Soleto-MediumItalic'),
+      url('./assets/fonts/Soleto-MediumItalic.eot?#iefix') format('embedded-opentype'),
+      url('./assets/fonts/Soleto-MediumItalic.woff2') format('woff2'),
+      url('./assets/fonts/Soleto-MediumItalic.woff') format('woff'),
+      url('./assets/fonts/Soleto-MediumItalic.ttf') format('truetype');
+  font-weight: 500;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Soleto';
+  src: url('./assets/fonts/Soleto-Italic.eot');
+  src: local('Soleto Italic'), local('Soleto-Italic'),
+      url('./assets/fonts/Soleto-Italic.eot?#iefix') format('embedded-opentype'),
+      url('./assets/fonts/Soleto-Italic.woff2') format('woff2'),
+      url('./assets/fonts/Soleto-Italic.woff') format('woff'),
+      url('./assets/fonts/Soleto-Italic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Soleto';
+  src: url('./assets/fonts/Soleto-BoldItalic.eot');
+  src: local('Soleto Bold Italic'), local('Soleto-BoldItalic'),
+      url('./assets/fonts/Soleto-BoldItalic.eot?#iefix') format('embedded-opentype'),
+      url('./assets/fonts/Soleto-BoldItalic.woff2') format('woff2'),
+      url('./assets/fonts/Soleto-BoldItalic.woff') format('woff'),
+      url('./assets/fonts/Soleto-BoldItalic.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Soleto';
+  src: url('./assets/fonts/Soleto-Black.eot');
+  src: local('Soleto Black'), local('Soleto-Black'),
+      url('./assets/fonts/Soleto-Black.eot?#iefix') format('embedded-opentype'),
+      url('./assets/fonts/Soleto-Black.woff2') format('woff2'),
+      url('./assets/fonts/Soleto-Black.woff') format('woff'),
+      url('./assets/fonts/Soleto-Black.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Soleto';
+  src: url('./assets/fonts/Soleto-BlackItalic.eot');
+  src: local('Soleto Black Italic'), local('Soleto-BlackItalic'),
+      url('./assets/fonts/Soleto-BlackItalic.eot?#iefix') format('embedded-opentype'),
+      url('./assets/fonts/Soleto-BlackItalic.woff2') format('woff2'),
+      url('./assets/fonts/Soleto-BlackItalic.woff') format('woff'),
+      url('./assets/fonts/Soleto-BlackItalic.ttf') format('truetype');
+  font-weight: 900;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Soleto';
+  src: url('./assets/fonts/Soleto-LightItalic.eot');
+  src: local('Soleto Light Italic'), local('Soleto-LightItalic'),
+      url('./assets/fonts/Soleto-LightItalic.eot?#iefix') format('embedded-opentype'),
+      url('./assets/fonts/Soleto-LightItalic.woff2') format('woff2'),
+      url('./assets/fonts/Soleto-LightItalic.woff') format('woff'),
+      url('./assets/fonts/Soleto-LightItalic.ttf') format('truetype');
+  font-weight: 300;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Soleto';
+  src: url('./assets/fonts/Soleto-Thin.eot');
+  src: local('Soleto Thin'), local('Soleto-Thin'),
+      url('./assets/fonts/Soleto-Thin.eot?#iefix') format('embedded-opentype'),
+      url('./assets/fonts/Soleto-Thin.woff2') format('woff2'),
+      url('./assets/fonts/Soleto-Thin.woff') format('woff'),
+      url('./assets/fonts/Soleto-Thin.ttf') format('truetype');
+  font-weight: 100;
+  font-style: normal;
+}
+
+
+$my-typography: mat.define-typography-config(
+  $font-family: 'Roboto',
+);
+@include mat.all-component-typographies($my-typography);
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+}
+button {
+  font-family: 'Soleto' !important;
+  cursor: pointer;
+}
+h1,h2,h3,h4,h5,h6{
+  font-family: 'Soleto' !important;
+}
+
+.heading-global{
+  font-weight: 600;
+  padding-bottom: 4px;
+  letter-spacing: 1px;
+  border-bottom: 3px solid #f79e1b;
+  width: fit-content;
+}
+mat-form-field .mat-form-field {
+  &-underline {
+    position: relative;
+    bottom: auto;
+  }
+  &-subscript-wrapper {
+    position: static;
+  }
+}
+
+#footer{
+  height:var(--footer-height);
+}
+
+:root {
+  --header-height: 90px; 
+  --footer-height: 20px;
+  --scrollbar-width:10px;
+  --mat-option-selected-state-label-text-color:#000000
+}
+
+@media only screen and (max-width:420px) {
+  :root {
+    --header-height: 90px; 
+    --footer-height: 30px !important;
+  }
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
+    // color: #f79e1b;
+}
+
+.qrcode-popup {
+  height: fit-content;
+  width: fit-content;
+  background-color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.tnc-popup {
+  width: 65%;
+  height: 100vh;
+  overflow-y: auto;
+  background-color: white;
+  position: relative;
+  @media only screen and (max-width:500px){
+    width:100%;
+  }
+}
+
+.login-popup .mat-mdc-dialog-container .mdc-dialog__surface{  
+  position: absolute !important;
+  top: 30px;
+  width: 30%;
+  height: auto;
+  background-color: #000000a1 !important;
+  @media only screen and (max-width: 1400px) {
+    width: 40% ;
+  }
+
+  @media only screen and (max-width: 1100px) {
+    width: 55%;
+  }
+
+  @media only screen and (max-width: 750px) {
+    width: 70% ;
+  }
+
+  @media only screen and (max-width: 600px) {
+    width: 110% ;
+    min-width: 300px;
+  }
+}

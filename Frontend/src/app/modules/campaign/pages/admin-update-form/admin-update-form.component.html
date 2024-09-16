@@ -1,0 +1,41 @@
+<app-layout>
+    <div id="update-form">
+        <div class="update-form-wrapper">
+            <h2>Update Form</h2>
+            <form [formGroup]="updateForm" class="formClass" (ngSubmit)="onSubmit()">
+                <mat-form-field appearance="outline">
+                    <mat-label>Booklet</mat-label>
+                    <mat-select type="text" formControlName="bookletSeries">
+                        <mat-select-trigger>
+                            {{this.updateForm.get("bookletSeries")?.value?.series}}
+                            ({{this.updateForm.get("bookletSeries")?.value?.model}})
+                        </mat-select-trigger>
+                        <mat-option [value]="option" *ngFor="let option of booketSeries">
+                            <div id="dropdown-class">
+                                <div>{{option?.series || "unknown"}}</div>
+                                <div id="model-option">{{option?.model || "unknown"}}</div>
+                            </div>
+                        </mat-option>
+                    </mat-select>
+                    <mat-error>Please select the booklet</mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Branch</mat-label>
+                    <input matInput type="text" formControlName="branchName" placeholder="Enter the Branch">
+                    <mat-error>Please enter the branch</mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Outlet</mat-label>
+                    <input matInput type="text" formControlName="outletName" placeholder="Enter the Outlet">
+                    <mat-error>Please enter the outlet</mat-error>
+                </mat-form-field>
+                <div class="btn-class">
+                    <button type="submit" mat-raised-button color="customColor">
+                        UPDATE
+                    </button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</app-layout>

@@ -1,0 +1,111 @@
+#header {
+    z-index:1;
+    position:fixed;
+    top:0px;
+    width:100%;
+    .page-header {
+      height:90px;
+      background-color: #000000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .header-wrapper {
+        margin: 8px auto;
+        width: 76%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        img{
+          width:185px;
+        }
+      }
+      .header-link {
+        // width:50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        justify-content: end;
+        color: #f39200;
+        padding-right: 35px;
+  
+        a {
+          margin-right: 20px;
+          vertical-align: bottom;
+          cursor: pointer;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+        a:hover {
+          
+          font-weight: 500;
+          color:white;
+          transition: .7s;
+        }
+  
+        span {
+          font-size: 20px;
+        }
+  
+      }
+    }
+
+    .header-menu{
+      display:none ;
+      button {
+        background-color: white;
+        color:rgb(0, 0, 0);
+      }
+    }
+  
+  }
+
+  @media only screen and (max-width:720px) {
+    #header{
+      .page-header{
+        width:100%;
+        .header-wrapper{
+          width:100%!important;
+        }
+      }
+    }
+  }
+
+  @media only screen and (max-width:500px) {
+    #header{
+      .header-wrapper{
+        width:100%;
+        margin:auto 50px auto 30px !important; 
+        img{
+          width:100px!important
+        }
+        .header-link{
+          display: none;
+        }
+        .header-menu{
+          display: flex;
+          button{
+            transform: scale(0.8);
+            background-color: #000000;
+            color: white;
+          }
+        }
+      }
+    }
+  }
+
+  @media only screen and (max-width:350px) {
+    #header{
+      .header-wrapper{
+        width:100%;
+        margin:auto 0px auto 0px !important; 
+        .header-link{
+          display: none;
+        }
+        .header-menu{
+          display: flex;
+        }
+      }
+    }
+  }

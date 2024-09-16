@@ -1,0 +1,263 @@
+<app-layout>
+  <div id="admin-reports">
+    <div class="admin-reports-wrapper">
+      <div class="admin-reports-header">
+        <h2>Reports</h2>
+      </div>
+
+      <div class="admin-reports-content">
+        <div class="admin-reports-buttons">
+          <div class="admin-reports-filters">
+
+            <mat-form-field appearance="outline">
+              <mat-label>Select report type</mat-label>
+              <mat-select placeholder="Select report type" (selectionChange)="setActiveTable()"
+                [(ngModel)]="reportType">
+                <mat-option value="login-success">Login Reports</mat-option>
+                <mat-option value="otp-success">OTP Success Reports</mat-option>
+                <mat-option value="otp-failure">OTP Failure Reports</mat-option>
+                <mat-option value="otp-active">OTP Active Reports</mat-option>
+                <mat-option value="users">Users Reports</mat-option>
+                <mat-option value="payout">Payout Reports</mat-option>
+                <mat-option value="coupon-claimed">Coupon Claimed Reports</mat-option>
+                <mat-option value="slogan">Slogan Reports</mat-option>
+                <mat-option value="redemption-request">Redemption Request</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" *ngIf="activeTable['redemption-request']">
+              <mat-label>Mobile</mat-label>
+              <input matInput type="number" onKeyPress="if(this.value.length==10) return false;" pattern="/d*" (input)="filteration($event,'mobile')" [value]="filterData.mobile" placeholder="Search by mobile number"/>
+              <button matSuffix mat-icon-button class="custom-mat-suffix" (click)="filteration($event,'mobile',false)"><mat-icon>close</mat-icon></button>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" *ngIf="activeTable['payout']">
+              <mat-label>Status</mat-label>
+              <mat-select (selectionChange)="changeStatus()" [(ngModel)]="transactionStatus">
+                <mat-option value="All">All</mat-option>
+                <mat-option value="Rejected">Rejected</mat-option>
+                <mat-option value="Approved">Approved</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+          </div>
+
+          <mat-paginator [length]="totalLength" [pageSize]="50" [pageSizeOptions]="[10,25,50]" aria-label="Select page"
+            (page)="onPaginator($event)">
+          </mat-paginator>
+
+          <div class="admin-reports-download">
+            <button mat-mini-fab aria-label="Example icon button with a bookmark icon" matTooltip="Download"
+              (click)="download(reportType)">
+              <mat-icon>downloading</mat-icon>
+            </button>
+          </div>
+        </div>
+        
+        <div class="action-btn" *ngIf="activeTable['redemption-request']">
+          <button type="button" mat-raised-button class="approve-btn" (click)="actionBtn('approve')"> <mat-icon>check</mat-icon> Approve </button>
+          <button type="button" mat-raised-button class="reject-btn" (click)="actionBtn('reject')"> <mat-icon>close</mat-icon> Reject </button>
+        </div>
+
+        <div class="admin-reports-table-wrapper">
+
+          <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+            <ng-container matColumnDef="name" *ngIf="activeTable['slogan'] || activeTable['redemption-request'] ">
+              <th mat-header-cell *matHeaderCellDef> Name </th>
+              <td mat-cell *matCellDef="let element"> {{element?.name || "-" }} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="email" *ngIf="activeTable['slogan'] || activeTable['redemption-request'] ">
+              <th mat-header-cell *matHeaderCellDef> Email </th>
+              <td mat-cell *matCellDef="let element"> {{element?.email || "-"}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="mobile"
+              *ngIf="activeTable['otp-success'] || activeTable['login-success'] || activeTable['otp-failure'] || activeTable['otp-active'] || activeTable['users'] || activeTable['payout'] || activeTable['slogan'] || activeTable['redemption-request'] ">
+              <th mat-header-cell *matHeaderCellDef> Mobile Number </th>
+              <td mat-cell *matCellDef="let element"> {{element?.mobile || "-"}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="otp"
+              *ngIf="activeTable['otp-success'] || activeTable['otp-failure'] || activeTable['otp-active']">
+              <th mat-header-cell *matHeaderCellDef> OTP </th>
+              <td mat-cell *matCellDef="let element"> {{element?.otp || "-"}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="createdAt"
+              *ngIf="activeTable['otp-success'] || activeTable['login-success'] || activeTable['otp-failure'] || activeTable['otp-active'] || activeTable['users'] || activeTable['payout'] || activeTable['coupon-claimed'] || activeTable['redemption-request'] ">
+              <th mat-header-cell *matHeaderCellDef> Generated AT </th>
+              <td mat-cell *matCellDef="let element"> {{
+                ( element?.createdAt && (element?.createdAt | dateFormat)) || (element?.transactedOn &&
+                (element?.transactedOn | dateFormat)) || (element?.claimedOn && (element?.claimedOn | dateFormat)) ||
+                "-"
+
+                }} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="updatedAt"
+              *ngIf="activeTable['login-success'] || activeTable['users'] || activeTable['payout'] ||activeTable['coupon-claimed']">
+              <th mat-header-cell *matHeaderCellDef> Updated At </th>
+              <td mat-cell *matCellDef="let element"> {{(element?.updatedAt && (element?.updatedAt | dateFormat)) || (
+                element?.updatedOn && (element?.updatedOn | dateFormat)) || "-"}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="ip"
+              *ngIf="activeTable['login-success'] || activeTable['users'] || activeTable['slogan']">
+              <th mat-header-cell *matHeaderCellDef> IP Address </th>
+              <td mat-cell *matCellDef="let element"> {{element.ip || "-"}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="pointsBalace" *ngIf="activeTable['users']">
+              <th mat-header-cell *matHeaderCellDef> Points Available </th>
+              <td mat-cell *matCellDef="let element"> {{(element.points_balance ) || "-" }} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="role" *ngIf="activeTable['users']">
+              <th mat-header-cell *matHeaderCellDef>User Role</th>
+              <td mat-cell *matCellDef="let element"> {{element.role || "-"}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="bonus" *ngIf="activeTable['users']">
+              <th mat-header-cell *matHeaderCellDef>User Bonus</th>
+              <td mat-cell *matCellDef="let element"> {{element.bonus && (element.bonus | currencyFormat) || "-"}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="point_redeemed" *ngIf="activeTable['users']">
+              <th mat-header-cell *matHeaderCellDef>Points Redeemed</th>
+              <td mat-cell *matCellDef="let element"> {{(element.point_redeemed)|| "-" }} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="points_earned" *ngIf="activeTable['users']">
+              <th mat-header-cell *matHeaderCellDef>Points Earned</th>
+              <td mat-cell *matCellDef="let element"> {{(element.points_earned) || "-"}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="amount" *ngIf="activeTable['payout'] || activeTable['coupon-claimed'] || activeTable['redemption-request'] ">
+              <th mat-header-cell *matHeaderCellDef>Amount</th>
+              <td mat-cell *matCellDef="let element"> {{(element?.amount && (element?.amount | currencyFormat)) ||
+                (element?.value && (element?.value | currencyFormat)) || "-"}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="status" *ngIf="activeTable['payout']">
+              <th mat-header-cell *matHeaderCellDef>Status</th>
+              <td mat-cell *matCellDef="let element">
+                <span [ngClass]="{
+                              'status-success':element?.status == 'Approved',
+                              'status-failure':element?.status == 'Rejected'
+                             }">{{element.status || "-"}}</span>
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="comment" *ngIf="activeTable['payout']">
+              <th mat-header-cell *matHeaderCellDef>Comment</th>
+              <td mat-cell *matCellDef="let element"> {{element.comment || "-"}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="series" *ngIf="activeTable['coupon-claimed']">
+              <th mat-header-cell *matHeaderCellDef>Series</th>
+              <td mat-cell *matCellDef="let element"> {{element.series || "-"}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="coupon" *ngIf="activeTable['coupon-claimed'] || activeTable['slogan']">
+              <th mat-header-cell *matHeaderCellDef>Scratch Code</th>
+              <td mat-cell *matCellDef="let element"> {{element.scratchCode || element.coupon || "-"}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="iot" *ngIf="activeTable['coupon-claimed'] || activeTable['slogan']">
+              <th mat-header-cell *matHeaderCellDef>Coupon Code</th>
+              <td mat-cell *matCellDef="let element"> {{element.couponCode ||  "-"}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="model" *ngIf="activeTable['coupon-claimed'] || activeTable['slogan']">
+              <th mat-header-cell *matHeaderCellDef>Product Purchased </th>
+              <td mat-cell *matCellDef="let element"> {{element.model || "-"}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="claimed" *ngIf="activeTable['coupon-claimed']">
+              <th mat-header-cell *matHeaderCellDef>Points Claimed</th>
+              <td mat-cell *matCellDef="let element"> {{element.claimed || "-"}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="claimedOn" *ngIf="activeTable['slogan']">
+              <th mat-header-cell *matHeaderCellDef>Claimed On</th>
+              <td mat-cell *matCellDef="let element"> {{element.claimedOn && (element.claimedOn | dateFormat) || "-"}}
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="claimedBy" *ngIf="activeTable['slogan']">
+              <th mat-header-cell *matHeaderCellDef>Claimed By</th>
+              <td mat-cell *matCellDef="let element"> {{element.claimedBy || "-"}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="dateOfpuchase" *ngIf="activeTable['slogan']">
+              <th mat-header-cell *matHeaderCellDef>Purchased On</th>
+              <td mat-cell *matCellDef="let element"> {{element.dateOfpuchase && (element.dateOfpuchase |dateFormat :
+                "DD-MM-YYYY") || "-"}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="purchasePrice" *ngIf="activeTable['slogan']">
+              <th mat-header-cell *matHeaderCellDef>Product Code</th>
+              <td mat-cell *matCellDef="let element"> {{element?.partNumber || "-"}} </td>
+            </ng-container>
+            <ng-container matColumnDef="comment" *ngIf="activeTable['slogan']">
+              <th mat-header-cell *matHeaderCellDef>Comment</th>
+              <td mat-cell *matCellDef="let element"> {{element?.comment || "-"}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="value" *ngIf="activeTable['slogan']">
+              <th mat-header-cell *matHeaderCellDef>Value</th>
+              <td mat-cell *matCellDef="let element"> {{element?.valueOfCoupon && (element?.valueOfCoupon |
+                currencyFormat) || "-"}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="booklet" *ngIf="activeTable['slogan']">
+              <th mat-header-cell *matHeaderCellDef>Booklet Series no.</th>
+              <td mat-cell *matCellDef="let element"> {{element?.seriesOfCoupon || "-" }} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="outlet" *ngIf="activeTable['slogan']">
+              <th mat-header-cell *matHeaderCellDef> Distributor Name </th>
+              <td mat-cell *matCellDef="let element"> {{element?.outletOfCoupon || "-"}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="branch" *ngIf="activeTable['slogan']">
+              <th mat-header-cell *matHeaderCellDef> District </th>
+              <td mat-cell *matCellDef="let element"> {{element?.branchOfCoupon || "-"}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="updatedBy" *ngIf="activeTable['payout']">
+              <th mat-header-cell *matHeaderCellDef> Updated By </th>
+              <td mat-cell *matCellDef="let element"> {{element?.updatedBy || "-"}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="upiId" *ngIf="activeTable['redemption-request']">
+              <th mat-header-cell *matHeaderCellDef> UPI ID </th>
+              <td mat-cell *matCellDef="let element"> {{element?.upiId || "-"}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="action" *ngIf="activeTable['redemption-request']">
+              <th mat-header-cell *matHeaderCellDef sortActionDescription="Sort by dealer_name">
+                <mat-checkbox (change)="$event ? masterToggle() : null " [checked]="selection.hasValue()"
+                  [indeterminate]="selection.hasValue() && !isAllSelected()"></mat-checkbox>
+              </th>
+              <td mat-cell *matCellDef="let row" >
+  
+                <mat-checkbox (click)="$event.stopPropagation() " (change)="$event ? selection.toggle(row) : null"
+                  [checked]="selection.isSelected(row)"></mat-checkbox>
+  
+              </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            <tr class="mat-row" *matNoDataRow>
+              <td class="mat-cell" colspan="10">No data found</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</app-layout>

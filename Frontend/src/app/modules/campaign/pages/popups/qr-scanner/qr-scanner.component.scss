@@ -1,0 +1,20 @@
+.qr-scanner-code {
+    background-color: rgb(255, 255, 255);
+
+    .btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 6px 30px 10px;
+    }
+
+    .btn button {
+
+        border: none;
+        padding: 8px 20px;
+        color:#ff0000d3;
+        background-color: #ffffff;
+    }
+
+
+}

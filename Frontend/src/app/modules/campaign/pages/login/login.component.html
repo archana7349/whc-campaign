@@ -1,0 +1,39 @@
+<div id="login-page">
+    <div class="login-page-wrapper">
+        <div class="container">
+            <div>
+                <h2 >Verify Your Mobile No.</h2>
+            </div>
+            <div>
+                <hr>
+                <form [formGroup]="loginForm">
+                    <div class="wrapper">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Mobile Number</mat-label>
+                            <input matInput type="number" placeholder="Mobile Number"  pattern="\d*" formControlName="mobile" onKeyPress="if(this.value.length==10) return false;"/>
+                            <button class="otp" mat-raised-button matSuffix mat-stroked-button aria-label="search" (click)="send_otp()">{{otpButtonString}}</button>
+                            <mat-error *ngIf="loginForm.get('mobile')?.hasError('required')">Please Enter mobile number</mat-error>
+                          </mat-form-field>
+                         
+                          <mat-form-field appearance="outline">
+                            <mat-label>Enter OTP</mat-label>
+                            <input matInput formControlName="otp" type="number" placeholder="Enter OTP" onKeyPress="if(this.value.length==6) return false;" pattern="\d*"/>
+                            <mat-error *ngIf="loginForm.get('otp')?.hasError('required')">Please Enter OTP</mat-error>
+                            <mat-error *ngIf="loginForm.get('otp')?.hasError('incorrect')">Incorrect OTP</mat-error>
+                          </mat-form-field>
+                           
+        
+                        <div class="buttons">
+                            <button class="otp-mobile" mat-raised-button matSuffix mat-stroked-button aria-label="search" (click)="send_otp()">{{otpButtonString}}</button>
+                             <button mat-raised-button mat-stroked-button  type="submit"  (click)="onSubmit()">Submit</button>
+                        </div>
+                    </div>
+                    
+                </form>
+                
+               
+
+            </div>
+        </div>
+    </div>
+</div>

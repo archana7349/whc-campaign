@@ -14,19 +14,24 @@ import { TermsAndConditionsComponent } from '../popups/terms-and-conditions/term
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ADMIN, FORM_DATA, validCouponCode, validEmail, validPincode } from 'src/app/shared/constant/constant';
 import { QrScannerComponent } from '../popups/qr-scanner/qr-scanner.component';
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss'],
+  
 })
+
+
 export class RegisterComponent {
   loggedIn: UserResFull | null = this.authService.getAuthStatus();
   registerationEnable: boolean = false;
   registerForm!: FormGroup;
-  remainingPoints: string = '0';
-  maxDate: Date = new Date();
-  qrFlag: boolean = true;
+  remainingPoints: string = '0';  
+  maxDate: Date = new Date(); 
+  qrFlag: boolean = false;
   cities: string[] = [];
+  fileName: string = '';
 
   // @HostListener('window:beforeunload', ['$event'])
   // handleBeforeUnload(event: BeforeUnloadEvent) {
@@ -59,6 +64,12 @@ export class RegisterComponent {
     this.resetAll();
   }
 
+
+ 
+
+
+  
+
   capitalize(event: any) {
     this.registerForm
       .get('scratch_code')
@@ -80,9 +91,37 @@ export class RegisterComponent {
       customer_mobile: [mobile_number],
       pincode: [''],
       city: [''],
-      scratch_code: [''],
+      selection_type: [''],
+      file: [null]
     });
   }
+
+  onFileSelected(event: any) {
+    const file: File = event.target.files[0];
+    if (file) {
+      this.fileName = file.name;
+      this.registerForm.patchValue({
+        file: file
+      });
+    }
+  }
+
+
+
+  onFileChange(event: any) {
+    const file = event.target.files[0];
+    if (file) {
+      
+      this.fileName = file.name;
+
+      
+    }
+    else {
+      this.fileName = ''; 
+    }
+  }
+
+  
 
   user_details() {
     this.apiService.user_details().subscribe((res: any) => {
@@ -146,18 +185,38 @@ export class RegisterComponent {
 
   onSubmit() {
     this.fieldValidators('all')
+    console.log('vsfvsfvfv',this.registerForm.valid)
+    for(let i in this.registerForm.controls){
+      console.log(i,this.registerForm.controls[i].errors)
+    }
     if (this.registerForm.valid) {
       let payload = new FormData();
       payload.append("couponCode",this.registerForm.value.qrCode)
+      payload.append("name",this.registerForm.value.customer_name)
+      payload.append("email",this.registerForm.value.customer_email)
+      payload.append("selection_type", this.registerForm.value.selection_type);
+      payload.append("city",this.registerForm.value.city);
+      payload.append("invoice", this.registerForm.value.file)
+      payload. append("pincode",this.registerForm.value.pincode)
+      // payload.append()
+     
+      // const fileControl = this.registerForm.get('fileName');
+      // if (fileControl?.value) {
+      //   payload.append('file', fileControl.value);
+      // }
+
       
+
+
       // let payload = {
       //   couponCode: this.registerForm.value.qrCode,
       //   name: this.registerForm.value.customer_name,
-      //   email: this.registerForm.value.customer_email,
+      //   email: this.registerForm.value.email,
       //   pincode: this.registerForm.value.pincode,
       //   city: this.registerForm.value.city,
       //   scratchCode: this.registerForm.value.scratch_code,
       // };
+      console.log("near to api call")
       this.apiService.formClaim(payload).subscribe({
         next: (res: any) => {
           if (res?.code === 200) {

@@ -5,3 +5,19 @@
         <button [mat-dialog-close]="" mat-raised-button>close</button>
     </div>
 </div>
+
+<!-- <script>
+    
+    function scanSuccessHandler(scanResult) {
+      
+      fetch('/api/product-scan', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ scanCode: scanResult })
+      })
+      .then(response => response.json())
+      .then(data => {
+        console.log('Response:', data);
+      });
+    }
+  </script> -->

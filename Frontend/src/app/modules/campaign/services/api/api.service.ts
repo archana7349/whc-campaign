@@ -106,7 +106,7 @@ export class ApiService {
     return this.http.post(`${this.baseurl}auth/validate-coupon`,payload);
   }
   formClaim(payload:any){
-    return this.http.post(`${this.baseurl}auth/claim-coupon`,payload,{header});
+    return this.http.post(`${this.baseurl}auth/claim-coupon`,payload);
   }
   raiseRedemption(amount:string){
     return this.http.post(`${this.baseurl}auth/raise-redemption-request`,{amount});

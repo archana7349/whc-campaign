@@ -74,7 +74,7 @@ export class AdminReportsComponent {
     'dateOfpuchase',
     'model',
     'purchasePrice',
-    'coupon',
+    'invoiceUrl',
     'iot',
     'value',
     'comment',
@@ -96,14 +96,13 @@ export class AdminReportsComponent {
     'login-success': true,
     'otp-failure': true,
     'otp-active': true,
-    'coupon-claimed': true,
     slogan: true,
     users: true,
     payout: true,
     'redemption-request': true,
   };
 
-  reportType: string = 'payout';
+  reportType: string = 'slogan';
 
   pageLimit: number = PAGE_LIMIT;
 
@@ -247,6 +246,12 @@ export class AdminReportsComponent {
       },
       error: (err: any) => {},
     });
+  }
+
+  openFile(fileUrl:string){
+    if(fileUrl){
+      window.open(fileUrl, "_blank");
+    }
   }
 
   getReports() {

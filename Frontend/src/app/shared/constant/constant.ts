@@ -8,6 +8,8 @@ export const PAGE_LIMIT: number = 2;
 export const ITEMS_PER_PAGE: number = 1;
 export const SKIP_PAGE: number = 1;
 
+export const TAC_URL:string = "https://rishta-uat.s3.ap-south-1.amazonaws.com/img/dhanbarse_terms_condition.pdf"
+export const MAX_FILE_SIZE:number = 5 * 1024 * 1024
 export function calculateItems(items_per_page: number, page_index: number) {
   return items_per_page * page_index + items_per_page;
 }

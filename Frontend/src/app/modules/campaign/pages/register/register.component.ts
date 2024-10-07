@@ -12,7 +12,7 @@ import { ApiService } from '../../services/api/api.service';
 import { register } from '../../services/apiRequestInterface';
 import { TermsAndConditionsComponent } from '../popups/terms-and-conditions/terms-and-conditions.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ADMIN, FORM_DATA, validCouponCode, validEmail, validPincode } from 'src/app/shared/constant/constant';
+import { ADMIN, FORM_DATA, MAX_FILE_SIZE, TAC_URL, validCouponCode, validEmail, validPincode } from 'src/app/shared/constant/constant';
 import { QrScannerComponent } from '../popups/qr-scanner/qr-scanner.component';
 
 @Component({
@@ -185,10 +185,14 @@ export class RegisterComponent {
 
   onSubmit() {
     this.fieldValidators('all')
-    console.log('vsfvsfvfv',this.registerForm.valid)
-    for(let i in this.registerForm.controls){
-      console.log(i,this.registerForm.controls[i].errors)
+    
+    if(this.registerForm.value.file?.size > MAX_FILE_SIZE){
+      this.snackbar.open("File size should be less than 5 MB","close",{
+        duration: 3000,
+      })
+      return 
     }
+
     if (this.registerForm.valid) {
       let payload = new FormData();
       payload.append("couponCode",this.registerForm.value.qrCode)
@@ -251,7 +255,8 @@ export class RegisterComponent {
   }
 
   termsAndCondition() {
-    this.registerationEnable && this.dialog.open(TermsAndConditionsComponent,{ panelClass: 'tnc-popup' });
+    // this.registerationEnable && this.dialog.open(TermsAndConditionsComponent,{ panelClass: 'tnc-popup' });
+    window.open(TAC_URL,'_blank')
   }
 
   openDialog() {

@@ -1,4 +1,4 @@
 export const environment = {
     production:true,
-    baseUrl:"https://dev.xuriti.app/api/"
+    baseUrl:"https://warrantyutsav.vguard.in/api/"
 }

@@ -96,15 +96,15 @@ export class RegisterComponent {
     });
   }
 
-  onFileSelected(event: any) {
-    const file: File = event.target.files[0];
-    if (file) {
-      this.fileName = file.name;
-      this.registerForm.patchValue({
-        file: file
-      });
-    }
-  }
+  // onFileSelected(event: any) {
+  //   const file: File = event.target.files[0];
+  //   if (file) {
+  //     this.fileName = file.name;
+  //     this.registerForm.patchValue({
+  //       file: file
+  //     });
+  //   }
+  // }
 
 
 
@@ -186,12 +186,12 @@ export class RegisterComponent {
   onSubmit() {
     this.fieldValidators('all')
     
-    if(this.registerForm.value.file?.size > MAX_FILE_SIZE){
-      this.snackbar.open("File size should be less than 5 MB","close",{
-        duration: 3000,
-      })
-      return 
-    }
+    // if(this.registerForm.value.file?.size > MAX_FILE_SIZE){
+    //   this.snackbar.open("File size should be less than 5 MB","close",{
+    //     duration: 3000,
+    //   })
+    //   return 
+    // }
 
     if (this.registerForm.valid) {
       let payload = new FormData();
@@ -200,7 +200,7 @@ export class RegisterComponent {
       payload.append("email",this.registerForm.value.customer_email)
       payload.append("selection_type", this.registerForm.value.selection_type);
       payload.append("city",this.registerForm.value.city);
-      payload.append("invoice", this.registerForm.value.file)
+      // payload.append("invoice", this.registerForm.value.file)
       payload. append("pincode",this.registerForm.value.pincode)
       // payload.append()
      
@@ -386,18 +386,18 @@ export class RegisterComponent {
       }
     }
 
-    if (fieldName == 'scratch_code' || fieldName == 'all') {
-      if (!this.registerForm.get('scratch_code')?.value) {
-        this.registerForm.controls['scratch_code']?.setErrors({
-          required: true,
-        });
-      } else if (this.registerForm.get('scratch_code')?.value?.length != 6) {
-        this.registerForm.controls['scratch_code']?.setErrors({
-          pattern: true,
-        });
-      } else {
-        this.registerForm.controls['scratch_code']?.setErrors(null);
-      }
-    }
+    // if (fieldName == 'scratch_code' || fieldName == 'all') {
+    //   if (!this.registerForm.get('scratch_code')?.value) {
+    //     this.registerForm.controls['scratch_code']?.setErrors({
+    //       required: true,
+    //     });
+    //   } else if (this.registerForm.get('scratch_code')?.value?.length != 6) {
+    //     this.registerForm.controls['scratch_code']?.setErrors({
+    //       pattern: true,
+    //     });
+    //   } else {
+    //     this.registerForm.controls['scratch_code']?.setErrors(null);
+    //   }
+    // }
   }
 }

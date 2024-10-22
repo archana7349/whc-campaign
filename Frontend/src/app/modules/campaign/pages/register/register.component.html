@@ -3,10 +3,10 @@
     <div class="register-page-wrapper">
       <img src="assets/images/scanANDwin.jpeg" />
       <div class="register-fields">
-        <h2>Dhanbarse 2024</h2>
+        <h2>Warranty Utsav</h2>
         <div class="buttons" *ngIf="!qrFlag">
-          <span class="balance-points">Cashback Earned : &#x20B9;{{remainingPoints}} </span>
-          <button class="btn-redeem" (click)="gotoRedeem()" [disabled]="!registerationEnable">Redeem</button>
+          <!-- <span class="balance-points">Cashback Earned : &#x20B9;{{remainingPoints}} </span> -->
+          <!-- <button class="btn-redeem" (click)="gotoRedeem()" [disabled]="!registerationEnable">Redeem</button> -->
         </div>
         <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
 
@@ -85,7 +85,7 @@
                   type</mat-error>
               </mat-form-field>
           
-              <div class="form-group">
+              <!-- <div class="form-group">
                 <label for="fileUpload">Choose File</label>
                 <input
                   type="file"
@@ -93,7 +93,7 @@
                   class="form-control"
                   (change)="onFileSelected($event)"
                 />
-              </div>
+              </div> -->
 
 
 

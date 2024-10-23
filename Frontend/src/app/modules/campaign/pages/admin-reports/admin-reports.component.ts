@@ -268,6 +268,7 @@ export class AdminReportsComponent {
       error: (err) => {
         this.setTableRequirement();
         this.dataSource = new MatTableDataSource();
+        this.dataSource.paginator = this.paginator;
       },
     });
   }

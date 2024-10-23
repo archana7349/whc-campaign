@@ -74,7 +74,6 @@ export class AdminReportsComponent {
     'dateOfpuchase',
     'model',
     'purchasePrice',
-    'invoiceUrl',
     'iot',
     'value',
     'comment',
